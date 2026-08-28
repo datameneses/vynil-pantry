@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinyl Pantry</title>
+  <meta name="description" content="A personal archive of vinyl records collected, by genre, artist, decade, and origin.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vinyl Pantry">
+  <meta property="og:title" content="Vinyl Pantry">
+  <meta property="og:description" content="A personal archive of vinyl records collected, by genre, artist, decade, and origin.">
+  <meta property="og:url" content="https://datameneses.github.io/vynil-pantry/">
+  <meta property="og:image" content="https://datameneses.github.io/vynil-pantry/images/social-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vinyl Pantry">
+  <meta name="twitter:description" content="A personal archive of vinyl records collected, by genre, artist, decade, and origin.">
+  <meta name="twitter:image" content="https://datameneses.github.io/vynil-pantry/images/social-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="vinyls">
+  <header class="site-header">
+    <a class="brand" href="index.html">Vinyl Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a href="index.html" data-pt="Vinis">Vinyls</a>
+      <a href="about.html" data-pt="Sobre">About</a>
+      <div class="lang-toggle-group">
+        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
+        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1 data-pt="Vinis">Vinyls</h1>
+    <p class="page-intro" data-pt="Discos de vinil colecionados.">Vinyl records collected.</p>
+
+    <div class="dashboard" id="vinyls-dashboard"></div>
+
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label" data-pt="Ordenar por:">Sort by:</span>
+        <button class="toolbar-btn" data-sort="artist" type="button" data-pt="Artista">Artist</button>
+        <button class="toolbar-btn" data-sort="genre" type="button" data-pt="Gênero">Genre</button>
+        <button class="toolbar-btn active" data-sort="decade" type="button" data-pt="Década">Decade</button>
+        <button class="toolbar-btn" data-sort="year" type="button" data-pt="Ano">Year</button>
+      </div>
+      <div class="toolbar-group">
+        <span class="toolbar-label" data-pt="Filtro:">Filter:</span>
+        <select id="filter-genre"><option value="" data-pt="Todos os gêneros">All genres</option></select>
+        <select id="filter-country"><option value="" data-pt="Todos os países">All countries</option></select>
+        <select id="filter-decade"><option value="" data-pt="Todas as décadas">All decades</option></select>
+        <button class="toolbar-btn" id="reset-filters" type="button" data-pt="Redefinir">Reset</button>
+      </div>
+    </div>
+
+    <div class="card-grid vinyl-grid" id="vinyls-list"></div>
+
+    <hr class="section-divider">
+
+    <h2 data-pt="Lista de desejos">Wishlist</h2>
+    <p class="page-intro" data-pt="Discos que eu quero comprar em seguida.">Records I want to pick up next.</p>
+    <div class="wishlist-grid" id="wishlist-list"></div>
+  </main>
+
+  <footer class="site-footer" data-pt="Vinyl Pantry (um projeto pessoal)">Vinyl Pantry (a personal project)</footer>
+  <script src="js/main.js"></script>
+  <script>
+    const DECADE_ORDER = ["1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"];
+    const DECADE_COLORS = {
+      "1950s": "#EAD3BE",
+      "1960s": "#DDA579",
+      "1970s": "#C98A3E",
+      "1980s": "#A66A2E",
+      "1990s": "#8A5323",
+      "2000s": "#6E3F1C",
+      "2010s": "#573018",
+      "2020s": "#3E2110"
+    };
+    const CONTINENT_COLORS = {
+      "North America": "var(--color-accent)",
+      "Europe": "var(--color-secondary)",
+      "South America": "#C98A3E",
+      "Australia": "#7C93A0",
+      "Africa": "#A66A2E",
+      "Asia": "#8A5323"
+    };
+
+    function decadeRank(decade) {
+      const i = DECADE_ORDER.indexOf(decade);
+      return i === -1 ? DECADE_ORDER.length : i;
+    }
+
+    function countBy(data, keyFn) {
+      const counts = {};
+      data.forEach((item) => {
+        const key = keyFn(item);
+        if (!key) return;
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      return counts;
+    }
+
+    function renderHBarChart(title, counts) {
+      const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      const max = Math.max(...entries.map(([, v]) => v), 1);
+      const rows = entries
+        .map(([label, value]) => `
+          <div class="hbar-row" title="${label}: ${value} record${value === 1 ? "" : "s"}">
+            <span class="hbar-label">${t(label)}</span>
+            <div class="hbar-track"><div class="hbar-fill" style="width:${(value / max) * 100}%"></div></div>
+            <span class="hbar-value">${value}</span>
+          </div>
+        `)
+        .join("");
+      return `<div class="dashboard-card"><p class="dashboard-title">${title}</p>${rows}</div>`;
+    }
+
+    function renderDecadeChart(counts) {
+      const max = Math.max(...DECADE_ORDER.map((d) => counts[d] || 0), 1);
+      const cols = DECADE_ORDER
+        .map((decade) => {
+          const value = counts[decade] || 0;
+          const heightPct = value ? (value / max) * 100 : 2;
+          return `
+            <div class="vbar-col" title="${decade}: ${value} record${value === 1 ? "" : "s"}">
+              <div class="vbar-bar-area">
+                <span class="vbar-value">${value}</span>
+                <div class="vbar-fill" style="height:${heightPct}%; background:${DECADE_COLORS[decade]}"></div>
+              </div>
+              <span class="vbar-label">${decade}</span>
+            </div>
+          `;
+        })
+        .join("");
+      return `<div class="dashboard-card"><p class="dashboard-title">${t("Vinyls by Decade")}</p><div class="vbar-chart">${cols}</div></div>`;
+    }
+
+    function renderContinentDonut(counts) {
+      const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+      const total = order.reduce((sum, key) => sum + counts[key], 0) || 1;
+      let cumulative = 0;
+      const segments = order
+        .map((key) => {
+          const value = counts[key];
+          const pct = (value / total) * 100;
+          const color = CONTINENT_COLORS[key] || "var(--color-text-soft)";
+          const segment = `${color} ${cumulative}% ${cumulative + pct}%`;
+          cumulative += pct;
+          return segment;
+        })
+        .join(", ");
+      const legend = order
+        .map((key) => `<li><span class="swatch" style="background:${CONTINENT_COLORS[key] || "var(--color-text-soft)"}"></span>${t(key)} (${counts[key]})</li>`)
+        .join("");
+      return `
+        <div class="dashboard-card">
+          <p class="dashboard-title">${t("Vinyls by Continent")}</p>
+          <div class="donut-wrap">
+            <div class="donut" style="background: conic-gradient(${segments})">
+              <div class="donut-hole"><span>${total}</span><small>${t("vinyls")}</small></div>
+            </div>
+            <ul class="donut-legend">${legend}</ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDashboard(data) {
+      const byGenre = countBy(data, (v) => v.genre);
+      const byArtist = countBy(data, (v) => v.artist);
+      const byArtistRepeat = Object.fromEntries(Object.entries(byArtist).filter(([, count]) => count > 1));
+      const byDecade = countBy(data, (v) => v.decade);
+      const byContinent = countBy(data, (v) => v.origin && v.origin.continent);
+
+      document.getElementById("vinyls-dashboard").innerHTML =
+        renderHBarChart(t("Vinyls by Genre"), byGenre) +
+        renderHBarChart(t("Vinyls by Artist"), byArtistRepeat) +
+        renderDecadeChart(byDecade) +
+        renderContinentDonut(byContinent);
+    }
+
+    function field(label, value) {
+      return value ? `<li><strong>${t(label)}:</strong> ${value}</li>` : "";
+    }
+
+    function vinylTemplate(item) {
+      return `
+        <article class="card vinyl-card">
+          <div class="vinyl-image">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+          </div>
+          <div class="vinyl-separator"></div>
+          <div class="vinyl-details">
+            <h3>${[item.artist, item.name].filter(Boolean).join(" - ")}</h3>
+            <p class="card-meta">${t(item.genre)} · ${item.decade}</p>
+            <ul class="spec-list">
+              ${field("Release year", item.releaseYear)}
+              ${field("Country", item.origin && item.origin.country)}
+              ${field("Continent", item.origin && t(item.origin.continent))}
+              ${field("Date purchased", item.datePurchased)}
+            </ul>
+          </div>
+        </article>
+      `;
+    }
+
+    let vinylsData = [];
+    let currentSort = "decade";
+    let currentGenre = "";
+    let currentCountry = "";
+    let currentDecade = "";
+
+    function applyAndRender() {
+      let list = vinylsData.slice();
+
+      if (currentGenre) list = list.filter((v) => v.genre === currentGenre);
+      if (currentCountry) list = list.filter((v) => v.origin && v.origin.country === currentCountry);
+      if (currentDecade) list = list.filter((v) => v.decade === currentDecade);
+
+      if (currentSort === "artist") {
+        list.sort((a, b) => (a.artist || "").localeCompare(b.artist || ""));
+      } else if (currentSort === "genre") {
+        list.sort((a, b) => (a.genre || "").localeCompare(b.genre || ""));
+      } else if (currentSort === "decade") {
+        list.sort((a, b) => decadeRank(b.decade) - decadeRank(a.decade) || b.releaseYear - a.releaseYear);
+      } else if (currentSort === "year") {
+        list.sort((a, b) => b.releaseYear - a.releaseYear);
+      }
+
+      const container = document.getElementById("vinyls-list");
+      container.innerHTML = list.length
+        ? list.map(vinylTemplate).join("")
+        : `<p class="empty-state">${t("No vinyls match these filters.")}</p>`;
+    }
+
+    function populateSelect(id, values) {
+      const select = document.getElementById(id);
+      values.forEach((v) => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        select.appendChild(opt);
+      });
+    }
+
+    fetch("data/vinyls.json")
+      .then((res) => res.json())
+      .then((data) => {
+        vinylsData = data;
+
+        const genres = [...new Set(data.map((v) => v.genre).filter(Boolean))].sort();
+        const countries = [...new Set(data.map((v) => v.origin && v.origin.country).filter(Boolean))].sort();
+        const decadesPresent = DECADE_ORDER.filter((d) => data.some((v) => v.decade === d));
+
+        populateSelect("filter-genre", genres);
+        populateSelect("filter-country", countries);
+        populateSelect("filter-decade", decadesPresent);
+
+        renderDashboard(data);
+        applyAndRender();
+      })
+      .catch((err) => {
+        console.error("Failed to load data/vinyls.json", err);
+        document.getElementById("vinyls-list").innerHTML =
+          `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
+      });
+
+    document.addEventListener("langchange", () => {
+      renderDashboard(vinylsData);
+      applyAndRender();
+    });
+
+    document.querySelectorAll(".toolbar-btn[data-sort]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentSort = btn.dataset.sort;
+        document.querySelectorAll(".toolbar-btn[data-sort]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        applyAndRender();
+      });
+    });
+
+    document.getElementById("filter-genre").addEventListener("change", (e) => {
+      currentGenre = e.target.value;
+      applyAndRender();
+    });
+    document.getElementById("filter-country").addEventListener("change", (e) => {
+      currentCountry = e.target.value;
+      applyAndRender();
+    });
+    document.getElementById("filter-decade").addEventListener("change", (e) => {
+      currentDecade = e.target.value;
+      applyAndRender();
+    });
+
+    document.getElementById("reset-filters").addEventListener("click", () => {
+      currentSort = "decade";
+      currentGenre = "";
+      currentCountry = "";
+      currentDecade = "";
+      document.getElementById("filter-genre").value = "";
+      document.getElementById("filter-country").value = "";
+      document.getElementById("filter-decade").value = "";
+      document.querySelectorAll(".toolbar-btn[data-sort]").forEach((b) => b.classList.remove("active"));
+      document.querySelector('.toolbar-btn[data-sort="decade"]').classList.add("active");
+      applyAndRender();
+    });
+
+    loadAndRender("data/wishlist.json", "wishlist-list", (item) => {
+      const label = [item.artist, item.name].filter(Boolean).join(": ");
+      const content = item.url
+        ? `<a href="${item.url}" target="_blank" rel="noopener">${label}</a>`
+        : label;
+      return `<article class="card wishlist-card">${content}</article>`;
+    });
+  </script>
+</body>
+</html>

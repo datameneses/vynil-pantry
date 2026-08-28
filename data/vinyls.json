@@ -1,0 +1,444 @@
+[
+  {
+    "name": "French Kiwi Juice",
+    "artist": "FKJ",
+    "genre": "Electronic",
+    "releaseYear": 2017,
+    "decade": "2010s",
+    "image": "images/vinyls/fkj-french-kiwi-juice.jpg",
+    "origin": {
+      "country": "France",
+      "continent": "Europe"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Gorillaz",
+    "artist": "Gorillaz",
+    "genre": "Electronic",
+    "releaseYear": 2001,
+    "decade": "2000s",
+    "image": "images/vinyls/gorillaz-gorillaz.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Things don't always go the way you plan",
+    "artist": "Flume",
+    "genre": "Electronic",
+    "releaseYear": 2023,
+    "decade": "2020s",
+    "image": "images/vinyls/flume-things-dont-always-go-the-way-you-plan.jpg",
+    "origin": {
+      "country": "Australia",
+      "continent": "Australia"
+    },
+    "datePurchased": "2024"
+  },
+  {
+    "name": "Illmatic",
+    "artist": "Nas",
+    "genre": "Hip Hop",
+    "releaseYear": 1994,
+    "decade": "1990s",
+    "image": "images/vinyls/nas-illmatic.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Shades of Blue",
+    "artist": "Madlib",
+    "genre": "Hip Hop",
+    "releaseYear": 2003,
+    "decade": "2000s",
+    "image": "images/vinyls/madlib-shades-of-blue.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "The Divine Feminine",
+    "artist": "Mac Miller",
+    "genre": "Hip Hop",
+    "releaseYear": 2016,
+    "decade": "2010s",
+    "image": "images/vinyls/mac-miller-the-divine-feminine.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Views",
+    "artist": "Drake",
+    "genre": "Hip Hop",
+    "releaseYear": 2016,
+    "decade": "2010s",
+    "image": "images/vinyls/drake-views.jpg",
+    "origin": {
+      "country": "Canada",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "An Awesome Wave",
+    "artist": "Alt-J",
+    "genre": "Indie Pop",
+    "releaseYear": 2012,
+    "decade": "2010s",
+    "image": "images/vinyls/altj-an-awesome-wave.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2022"
+  },
+  {
+    "name": "Zaba",
+    "artist": "Glass Animals",
+    "genre": "Indie Pop",
+    "releaseYear": 2014,
+    "decade": "2010s",
+    "image": "images/vinyls/glass-animals-zaba.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2022"
+  },
+  {
+    "name": "Currents",
+    "artist": "Tame Impala",
+    "genre": "Indie Rock",
+    "releaseYear": 2015,
+    "decade": "2010s",
+    "image": "images/vinyls/tame-impala-currents.jpg",
+    "origin": {
+      "country": "Australia",
+      "continent": "Australia"
+    },
+    "datePurchased": "2022"
+  },
+  {
+    "name": "Naxatras",
+    "artist": "Naxatras",
+    "genre": "Indie Rock",
+    "releaseYear": 2015,
+    "decade": "2010s",
+    "image": "images/vinyls/naxatras-naxatras.jpg",
+    "origin": {
+      "country": "Greece",
+      "continent": "Europe"
+    },
+    "datePurchased": "2021"
+  },
+  {
+    "name": "The Universe Smiles upon You",
+    "artist": "Khruangbin",
+    "genre": "Indie Rock",
+    "releaseYear": 2015,
+    "decade": "2010s",
+    "image": "images/vinyls/khruangbin-the-universe-smiles-upon-you.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Tranquility Base Hotel + Casino",
+    "artist": "Arctic Monkeys",
+    "genre": "Indie Rock",
+    "releaseYear": 2018,
+    "decade": "2010s",
+    "image": "images/vinyls/arctic-monkeys-tranquility-base-hotel-casino.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "V",
+    "artist": "Naxatras",
+    "genre": "Indie Rock",
+    "releaseYear": 2025,
+    "decade": "2020s",
+    "image": "images/vinyls/naxatras-v.jpg",
+    "origin": {
+      "country": "Greece",
+      "continent": "Europe"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Getz / Gilberto",
+    "artist": "Stan Getz, Joao Gilberto, Tom Jobim",
+    "genre": "Jazz",
+    "releaseYear": 1964,
+    "decade": "1960s",
+    "image": "images/vinyls/getz-gilberto-getz-gilberto.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2025"
+  },
+  {
+    "name": "IV",
+    "artist": "Badbadnotgood",
+    "genre": "Jazz",
+    "releaseYear": 2016,
+    "decade": "2010s",
+    "image": "images/vinyls/badbadnotgood-iv.jpg",
+    "origin": {
+      "country": "Canada",
+      "continent": "North America"
+    },
+    "datePurchased": "2024"
+  },
+  {
+    "name": "Kind of Blue",
+    "artist": "Miles Davis",
+    "genre": "Jazz",
+    "releaseYear": 1959,
+    "decade": "1950s",
+    "image": "images/vinyls/miles-davis-kind-of-blue.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2022"
+  },
+  {
+    "name": "Voyager",
+    "artist": "Moonchild",
+    "genre": "Jazz",
+    "releaseYear": 2017,
+    "decade": "2010s",
+    "image": "images/vinyls/moonchild-voyager.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Chico Buarque",
+    "artist": "Chico Buarque",
+    "genre": "MPB",
+    "releaseYear": 1978,
+    "decade": "1970s",
+    "image": "images/vinyls/chico-buarque-chico-buarque.jpg",
+    "origin": {
+      "country": "Brazil",
+      "continent": "South America"
+    },
+    "datePurchased": "2025"
+  },
+  {
+    "name": "Cinema Transcendental",
+    "artist": "Caetano Veloso",
+    "genre": "MPB",
+    "releaseYear": 1979,
+    "decade": "1970s",
+    "image": "images/vinyls/caetano-veloso-cinema-transcendental.jpg",
+    "origin": {
+      "country": "Brazil",
+      "continent": "South America"
+    },
+    "datePurchased": "2025"
+  },
+  {
+    "name": "An Evening with Silk Sonic",
+    "artist": "Bruno Mars, Anderson Paak",
+    "genre": "Pop",
+    "releaseYear": 2021,
+    "decade": "2020s",
+    "image": "images/vinyls/silk-sonic-an-evening-with-silk-sonic.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Back to Black",
+    "artist": "Amy Winehouse",
+    "genre": "Pop",
+    "releaseYear": 2006,
+    "decade": "2000s",
+    "image": "images/vinyls/amy-winehouse-back-to-black.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2024"
+  },
+  {
+    "name": "Christmas",
+    "artist": "Michael Bublé",
+    "genre": "Pop",
+    "releaseYear": 2011,
+    "decade": "2010s",
+    "image": "images/vinyls/michael-buble-christmas.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Down FM",
+    "artist": "The Weeknd",
+    "genre": "Pop",
+    "releaseYear": 2022,
+    "decade": "2020s",
+    "image": "images/vinyls/the-weeknd-down-fm.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Off The Wall",
+    "artist": "Michael Jackson",
+    "genre": "Pop",
+    "releaseYear": 1979,
+    "decade": "1970s",
+    "image": "images/vinyls/michael-jackson-off-the-wall.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2026"
+  },
+  {
+    "name": "Never Enough",
+    "artist": "Daniel Caesar",
+    "genre": "R&B",
+    "releaseYear": 2023,
+    "decade": "2020s",
+    "image": "images/vinyls/daniel-caesar-never-enough.jpg",
+    "origin": {
+      "country": "Canada",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "The Miseducation of Lauryn Hill",
+    "artist": "Lauryn Hill",
+    "genre": "R&B",
+    "releaseYear": 1998,
+    "decade": "1990s",
+    "image": "images/vinyls/lauryn-hill-the-miseducation-of-lauryn-hill.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2024"
+  },
+  {
+    "name": "Special Edition Part 1",
+    "artist": "Fat Freddys Drop",
+    "genre": "Reggae",
+    "releaseYear": 2019,
+    "decade": "2010s",
+    "image": "images/vinyls/fat-freddys-drop-special-edition-part-1.jpg",
+    "origin": {
+      "country": "New Zealand",
+      "continent": "Australia"
+    },
+    "datePurchased": "2024"
+  },
+  {
+    "name": "Axis: Bold as Love",
+    "artist": "The Jimi Hendrix Experience",
+    "genre": "Rock",
+    "releaseYear": 1967,
+    "decade": "1960s",
+    "image": "images/vinyls/jimi-hendrix-axis-bold-as-love.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2023"
+  },
+  {
+    "name": "Continuum",
+    "artist": "John Mayer",
+    "genre": "Rock",
+    "releaseYear": 2006,
+    "decade": "2000s",
+    "image": "images/vinyls/john-mayer-continuum.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2021"
+  },
+  {
+    "name": "Dark Side of The Moon",
+    "artist": "Pink Floyd",
+    "genre": "Rock",
+    "releaseYear": 1973,
+    "decade": "1970s",
+    "image": "images/vinyls/pink-floyd-dark-side-of-the-moon.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2025"
+  },
+  {
+    "name": "Guardians of the Galaxy: Awesome Mix Vol. 1",
+    "artist": "Marvel",
+    "genre": "Rock",
+    "releaseYear": 2014,
+    "decade": "2010s",
+    "image": "images/vinyls/guardians-of-the-galaxy-awesome-mix-vol-1.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2022"
+  },
+  {
+    "name": "Room for Squares",
+    "artist": "John Mayer",
+    "genre": "Rock",
+    "releaseYear": 2001,
+    "decade": "2000s",
+    "image": "images/vinyls/john-mayer-room-for-squares.jpg",
+    "origin": {
+      "country": "United States",
+      "continent": "North America"
+    },
+    "datePurchased": "2021"
+  },
+  {
+    "name": "The Wall",
+    "artist": "Pink Floyd",
+    "genre": "Rock",
+    "releaseYear": 1979,
+    "decade": "1970s",
+    "image": "images/vinyls/pink-floyd-the-wall.jpg",
+    "origin": {
+      "country": "United Kingdom",
+      "continent": "Europe"
+    },
+    "datePurchased": "2025"
+  }
+]
