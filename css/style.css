@@ -1,15 +1,15 @@
 :root {
-  --color-bg: #100E0C;
+  --color-bg: #0D1211;
   --color-bg-card: rgba(255, 255, 255, 0.07);
-  --color-bg-card-solid: #211C17;
-  --color-text: #F3ECE3;
-  --color-text-soft: #C7BBAA;
-  --color-accent: #C98A3E;
-  --color-accent-soft: #E3BE8A;
-  --color-secondary: #7C93A0;
+  --color-bg-card-solid: #182422;
+  --color-text: #F1F5F4;
+  --color-text-soft: #A9BDBA;
+  --color-accent: #2FA79B;
+  --color-accent-soft: #8FD9CC;
+  --color-secondary: #C9A45C;
   --color-border: rgba(255, 255, 255, 0.14);
   --glass-blur: blur(18px);
-  --overlay-scrim: linear-gradient(180deg, rgba(8, 7, 6, 0.55) 0%, rgba(8, 7, 6, 0.72) 45%, rgba(8, 7, 6, 0.92) 100%);
+  --overlay-scrim: linear-gradient(180deg, rgba(7, 9, 9, 0.55) 0%, rgba(7, 9, 9, 0.72) 45%, rgba(7, 9, 9, 0.92) 100%);
 
   --font-heading: "Fraunces", Georgia, serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
