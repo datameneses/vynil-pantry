@@ -26,35 +26,31 @@
     <a class="brand" href="index.html">Vinyl Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html" data-pt="Vinis">Vinyls</a>
-      <a href="about.html" data-pt="Sobre">About</a>
-      <div class="lang-toggle-group">
-        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
-        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
-      </div>
+      <a href="index.html">Vinyls</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
   <main>
-    <h1 data-pt="Vinis">Vinyls</h1>
-    <p class="page-intro" data-pt="Discos de vinil colecionados.">Vinyl records collected.</p>
+    <h1>Vinyls</h1>
+    <p class="page-intro">Vinyl records collected.</p>
 
     <div class="dashboard" id="vinyls-dashboard"></div>
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label" data-pt="Ordenar por:">Sort by:</span>
-        <button class="toolbar-btn" data-sort="artist" type="button" data-pt="Artista">Artist</button>
-        <button class="toolbar-btn" data-sort="genre" type="button" data-pt="Gênero">Genre</button>
-        <button class="toolbar-btn active" data-sort="decade" type="button" data-pt="Década">Decade</button>
-        <button class="toolbar-btn" data-sort="year" type="button" data-pt="Ano">Year</button>
+        <span class="toolbar-label">Sort by:</span>
+        <button class="toolbar-btn" data-sort="artist" type="button">Artist</button>
+        <button class="toolbar-btn" data-sort="genre" type="button">Genre</button>
+        <button class="toolbar-btn active" data-sort="decade" type="button">Decade</button>
+        <button class="toolbar-btn" data-sort="year" type="button">Year</button>
       </div>
       <div class="toolbar-group">
-        <span class="toolbar-label" data-pt="Filtro:">Filter:</span>
-        <select id="filter-genre"><option value="" data-pt="Todos os gêneros">All genres</option></select>
-        <select id="filter-country"><option value="" data-pt="Todos os países">All countries</option></select>
-        <select id="filter-decade"><option value="" data-pt="Todas as décadas">All decades</option></select>
-        <button class="toolbar-btn" id="reset-filters" type="button" data-pt="Redefinir">Reset</button>
+        <span class="toolbar-label">Filter:</span>
+        <select id="filter-genre"><option value="">All genres</option></select>
+        <select id="filter-country"><option value="">All countries</option></select>
+        <select id="filter-decade"><option value="">All decades</option></select>
+        <button class="toolbar-btn" id="reset-filters" type="button">Reset</button>
       </div>
     </div>
 
@@ -62,12 +58,12 @@
 
     <hr class="section-divider">
 
-    <h2 data-pt="Lista de desejos">Wishlist</h2>
-    <p class="page-intro" data-pt="Discos que eu quero comprar em seguida.">Records I want to pick up next.</p>
+    <h2>Wishlist</h2>
+    <p class="page-intro">Records I want to pick up next.</p>
     <div class="wishlist-grid" id="wishlist-list"></div>
   </main>
 
-  <footer class="site-footer" data-pt="Vinyl Pantry (um projeto pessoal)">Vinyl Pantry (a personal project)</footer>
+  <footer class="site-footer">Vinyl Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
     const DECADE_ORDER = ["1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"];
@@ -269,11 +265,6 @@
         document.getElementById("vinyls-list").innerHTML =
           `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
       });
-
-    document.addEventListener("langchange", () => {
-      renderDashboard(vinylsData);
-      applyAndRender();
-    });
 
     document.querySelectorAll(".toolbar-btn[data-sort]").forEach((btn) => {
       btn.addEventListener("click", () => {
